@@ -44,12 +44,14 @@ Set-Location $companyDir
 $OutputEncoding = New-Object System.Text.UTF8Encoding $false
 [Console]::OutputEncoding = $OutputEncoding
 $ErrorActionPreference = 'Continue'
-# 無人の回はファイルの編集と調べものだけを許す。push はしない(会話の開始時のフックがまとめて送る)
+# 許可するツールとコマンドは headless-permissions.json に書く。
+# 無人の回に Bash を無条件で許すと、Web で読んだ文に仕込まれた指示で、PC 上の何でも実行できてしまう。
+# 読むだけのコマンドと git の記録だけを許し、push・削除・ダウンロード・プログラムや設定の書き換えを禁止する。
+$permFile = Join-Path $PSScriptRoot 'headless-permissions.json'
 $claudeArgs = @(
     '-p',
     '--permission-mode', 'acceptEdits',
-    '--allowedTools', 'Bash', 'Read', 'Glob', 'Grep', 'Edit', 'Write', 'WebSearch', 'WebFetch',
-    '--disallowedTools', 'Bash(git push:*)'
+    '--settings', $permFile
 )
 Write-Log "開始: $Skill"
 try {

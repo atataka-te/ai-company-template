@@ -1,0 +1,66 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(./**)",
+      "Glob",
+      "Grep",
+      "Edit",
+      "Write",
+      "WebSearch",
+      "WebFetch",
+
+      "Bash(cd:*)",
+      "Bash(pwd:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(grep:*)",
+      "Bash(sed -n:*)",
+      "Bash(echo:*)",
+      "Bash(printf:*)",
+      "Bash(date:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(cut:*)",
+      "Bash(diff:*)",
+      "Bash(find:*)",
+
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git rev-parse:*)"
+    ],
+    "deny": [
+      "Read(./secrets/**)",
+      "Read(~/.ssh/**)",
+      "Read(~/.claude.json)",
+      "Read(~/.claude/.credentials.json)",
+      "Read(~/.git-credentials)",
+
+      "Edit(./**/*.py)",
+      "Edit(./**/*.ps1)",
+      "Edit(./**/*.sh)",
+      "Edit(./**/*.bat)",
+      "Edit(./**/*.cmd)",
+      "Edit(./.claude/settings*.json)",
+      "Edit(./.claude/hooks/**)",
+      "Edit(./management/automation/**)",
+      "Edit(./secrets/**)",
+
+      "Bash(git push:*)",
+      "Bash(git * push*)",
+      "Bash(git config:*)",
+      "Bash(find * -exec*)",
+      "Bash(find * -delete*)",
+      "Bash(find * -fprint*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(rm:*)"
+    ]
+  }
+}
